@@ -1,5 +1,6 @@
 import 'dart:math' show pi;
 import 'package:flutter/material.dart';
+import 'package:vector_math/vector_math_64.dart' show Vector3;
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-const double withAndheight = 100;
+const double widthAndheight = 100;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -81,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: withAndheight, width: double.infinity),
+            SizedBox(height: widthAndheight, width: double.infinity),
             AnimatedBuilder(
               animation: Listenable.merge([
                 _Xcontroller,
@@ -98,10 +99,24 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     ..rotateZ(animation.evaluate(_Zcontroller)),
                   child: Stack(
                     children: [
+                      //front
                       Container(
+                        width: widthAndheight,
+                        height: widthAndheight,
                         color: Colors.red,
-                        width: withAndheight,
-                        height: withAndheight,
+                      ),
+                      //back
+                      Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.identity()
+                          ..translate(
+                            Vector3(0, 0, -widthAndheight),
+                          ),
+                        child: Container(
+                          width: widthAndheight,
+                          height: widthAndheight,
+                          color: Colors.green,
+                        ),
                       ),
                     ],
                   ),
