@@ -99,12 +99,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     ..rotateZ(animation.evaluate(_Zcontroller)),
                   child: Stack(
                     children: [
-                      //front
-                      Container(
-                        width: widthAndheight,
-                        height: widthAndheight,
-                        color: Colors.red,
-                      ),
                       //back
                       Transform(
                         alignment: Alignment.center,
@@ -116,6 +110,53 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                           width: widthAndheight,
                           height: widthAndheight,
                           color: Colors.green,
+                        ),
+                      ),
+
+                      //left
+                      Transform(
+                        alignment: Alignment.centerLeft,
+                        transform: Matrix4.identity()..rotateY(pi / 2.0),
+                        child: Container(
+                          width: widthAndheight,
+                          height: widthAndheight,
+                          color: Colors.purple,
+                        ),
+                      ),
+                      //right
+                      Transform(
+                        alignment: Alignment.centerRight,
+                        transform: Matrix4.identity()..rotateY(-pi / 2.0),
+                        child: Container(
+                          width: widthAndheight,
+                          height: widthAndheight,
+                          color: Colors.white,
+                        ),
+                      ),
+                      //front
+                      Container(
+                        width: widthAndheight,
+                        height: widthAndheight,
+                        color: Colors.red,
+                      ),
+                      //top
+                      Transform(
+                        alignment: Alignment.topCenter,
+                        transform: Matrix4.identity()..rotateX(-pi / 2.0),
+                        child: Container(
+                          width: widthAndheight,
+                          height: widthAndheight,
+                          color: Colors.pink,
+                        ),
+                      ),
+                      // bottom
+                      Transform(
+                        alignment: Alignment.bottomCenter,
+                        transform: Matrix4.identity()..rotateX(pi / 2.0),
+                        child: Container(
+                          width: widthAndheight,
+                          height: widthAndheight,
+                          color: Colors.blue,
                         ),
                       ),
                     ],
